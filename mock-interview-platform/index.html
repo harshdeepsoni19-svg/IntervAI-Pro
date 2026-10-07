@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IntervAI Pro - AI Mock Interview & Career Preparation Platform</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.05); opacity: 0.35; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+    .pulse-avatar { animation: pulse-ring 2.5s infinite ease-in-out; }
+    .waveform-bar { transition: height 0.12s ease; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(140, 140, 160, 0.25); border-radius: 4px; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased min-h-screen flex flex-col font-sans selection:bg-indigo-600 selection:text-white">
+
+  <!-- Header Navigation -->
+  <header class="border-b border-slate-800 bg-slate-900/90 sticky top-0 z-40 backdrop-blur-md px-6 py-3.5 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-indigo-500/20">
+        AI
+      </div>
+      <div>
+        <div class="flex items-center space-x-2">
+          <h1 class="font-bold text-lg tracking-tight text-white">IntervAI Pro</h1>
+          <span class="text-xs px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 font-semibold">Multimodal AI 360°</span>
+        </div>
+        <p class="text-xs text-slate-400">Practice like a real interview. Improve with AI. Get discovered by companies.</p>
+      </div>
+    </div>
+
+    <!-- Main Navigation Tabs -->
+    <nav class="flex items-center bg-slate-950 p-1 rounded-xl border border-slate-800 space-x-1 text-xs md:text-sm font-medium">
+      <button onclick="switchTab('profile')" id="nav-profile" class="nav-btn px-3.5 py-1.5 rounded-lg font-medium transition-all bg-slate-800 text-white shadow-sm">
+        1. Profile Setup
+      </button>
+      <button onclick="switchTab('interview')" id="nav-interview" class="nav-btn px-3.5 py-1.5 rounded-lg font-medium transition-all text-slate-400 hover:text-slate-200">
+        2. Live AI Mock Interview
+      </button>
+      <button onclick="switchTab('report')" id="nav-report" class="nav-btn px-3.5 py-1.5 rounded-lg font-medium transition-all text-slate-400 hover:text-slate-200">
+        3. Diagnostic Report
+      </button>
+      <button onclick="switchTab('marketplace')" id="nav-marketplace" class="nav-btn px-3.5 py-1.5 rounded-lg font-medium transition-all text-slate-400 hover:text-slate-200">
+        4. Recruiter Discovery
+      </button>
+      <button onclick="switchTab('architecture')" id="nav-architecture" class="nav-btn px-3.5 py-1.5 rounded-lg font-medium transition-all text-slate-400 hover:text-slate-200">
+        5. Architecture
+      </button>
+    </nav>
+
+    <!-- User / Session Indicator -->
+    <div class="flex items-center space-x-3 text-xs">
+      <div class="hidden md:flex items-center space-x-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span class="font-medium">Vision & Audio Telemetry Ready</span>
+      </div>
+      <div class="w-8 h-8 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 flex items-center justify-center font-bold">
+        RS
+      </div>
+    </div>
+  </header>
+
+  <!-- Main App Container -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 space-y-6">
+
+    <!-- ============================================== -->
+    <!-- TAB 1: PROFILE SETUP & ROLE SELECTION -->
+    <!-- ============================================== -->
+    <section id="section-profile" class="tab-pane block space-y-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-sm">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-5 mb-6">
+          <div>
+            <h2 class="text-xl font-bold text-white">Configure Your Mock Interview Session</h2>
+            <p class="text-sm text-slate-400 mt-1">
+              Customize your target role, preferred interview language (English, Hindi, Gujarati), and company culture style.
+            </p>
+          </div>
+          <button onclick="switchTab('interview')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-lg shadow-indigo-600/30 transition flex items-center space-x-2">
+            <span>Launch Live Interview Studio</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Column 1: Domain & Role -->
+          <div class="space-y-4">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">1. Target Career Domain</h3>
+            
+            <div>
+              <label class="block text-xs font-medium text-slate-400 mb-1">Target Field / Industry</label>
+              <select id="select-field" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-indigo-500">
+                <option value="software">Software Engineering & Technology</option>
+                <option value="ai-data">Data Science & AI / ML</option>
+                <option value="cloud-devops">Cloud & DevOps Architecture</option>
+                <option value="product">Product Management</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-medium text-slate-400 mb-1">Target Job Role</label>
+              <select id="select-role" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-indigo-500" onchange="handleRoleChange()">
+                <option value="Full Stack Engineer">Full Stack Engineer (React / Node / SQL)</option>
+                <option value="AI / ML Engineer">AI & Machine Learning Engineer (PyTorch / LLMs)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-medium text-slate-400 mb-1">Experience Level</label>
+              <div class="grid grid-cols-3 gap-2">
+                <button type="button" class="px-3 py-1.5 rounded-lg text-xs font-medium border border-indigo-500 bg-indigo-500/10 text-indigo-400">Junior (0-2y)</button>
+                <button type="button" class="px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-800 bg-slate-950 text-slate-400 hover:text-white">Mid (2-5y)</button>
+                <button type="button" class="px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-800 bg-slate-950 text-slate-400 hover:text-white">Senior (5y+)</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2: Language & Interview Format -->
+          <div class="space-y-4">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">2. Language & Interview Mode</h3>
+
+            <div>
+              <label class="block text-xs font-medium text-slate-400 mb-1">Preferred Interview Language</label>
+              <select id="select-language" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-indigo-500" onchange="handleLanguageChange()">
+                <option value="en">English (Global Corporate Standard)</option>
+                <option value="hi">Hindi (हिंदी - Corporate & Conversational)</option>
+                <option value="gu">Gujarati (ગુજરાતી - Regional & Tech)</option>
+              </select>
+              <p class="text-xs text-slate-500 mt-1">
+                The AI dynamically switches questions, speech pronunciation, and evaluations to your selected language.
+              </p>
+            </div>
+
+            <div>
+              <label class="block text-xs font-medium text-slate-400 mb-1">Interview Company Style</label>
+              <select id="select-style" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-indigo-500">
+                <option value="faang">Tier 1 Product Tech (Google, Amazon style)</option>
+                <option value="startup">High-Growth YC Startup (Fast, Pragmatic)</option>
+                <option value="enterprise">Global Consulting & Enterprise</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-medium text-slate-400 mb-1">Multimodal Evaluation Weightings</label>
+              <div class="space-y-1.5 text-xs text-slate-400">
+                <div class="flex justify-between"><span>Technical Depth</span><span class="text-indigo-400 font-semibold">25%</span></div>
+                <div class="flex justify-between"><span>Communication Clarity</span><span class="text-emerald-400 font-semibold">15%</span></div>
+                <div class="flex justify-between"><span>Non-Verbal (Eye & Posture)</span><span class="text-purple-400 font-semibold">20%</span></div>
+                <div class="flex justify-between"><span>Fluency & Confidence</span><span class="text-blue-400 font-semibold">20%</span></div>
+                <div class="flex justify-between"><span>STAR Problem Solving & Etiquette</span><span class="text-amber-400 font-semibold">20%</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 3: Skills & Recruiter Opt-in -->
+          <div class="space-y-4">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">3. Verified Recruiter Pipeline</h3>
+
+            <div>
+              <label class="block text-xs font-medium text-slate-400 mb-1">Candidate Profile Tags</label>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="text-xs bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2.5 py-1 rounded-lg">React.js</span>
+                <span class="text-xs bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2.5 py-1 rounded-lg">Node.js</span>
+                <span class="text-xs bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2.5 py-1 rounded-lg">PostgreSQL</span>
+                <span class="text-xs bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2.5 py-1 rounded-lg">Distributed Systems</span>
+                <span class="text-xs bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2.5 py-1 rounded-lg">Docker</span>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-gradient-to-br from-indigo-950/40 to-purple-950/40 border border-indigo-500/30">
+              <div class="flex items-start space-x-3">
+                <div class="p-2 rounded-lg bg-indigo-500/20 text-indigo-400">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                </div>
+                <div>
+                  <h4 class="text-xs font-bold text-white">Company Discovery Opt-In</h4>
+                  <p class="text-[11px] text-slate-400 mt-0.5">
+                    When you score ≥ 80% on this mock interview, your verified profile and interview answer clips become discoverable to 150+ recruiting companies.
+                  </p>
+                  <label class="flex items-center space-x-2 mt-2.5 cursor-pointer">
+                    <input type="checkbox" checked class="rounded border-slate-700 text-indigo-600 focus:ring-0">
+                    <span class="text-xs font-semibold text-indigo-300">Enable Direct Recruiter Discovery</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <button onclick="switchTab('interview')" class="w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm rounded-xl shadow-lg shadow-indigo-600/30 transition flex items-center justify-center space-x-2">
+                <span>Start AI Mock Interview Studio</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- TAB 2: LIVE MULTIMODAL AI MOCK INTERVIEW ROOM -->
+    <!-- ============================================== -->
+    <section id="section-interview" class="tab-pane hidden space-y-6">
+      
+      <!-- Studio Header Status -->
+      <div class="flex flex-wrap items-center justify-between gap-3 bg-slate-900 border border-slate-800 p-4 rounded-2xl">
+        <div class="flex items-center space-x-3">
+          <div class="w-3 h-3 rounded-full bg-red-500 animate-ping"></div>
+          <div>
+            <h2 class="text-sm font-bold text-white tracking-tight uppercase">Live AI Mock Interview Room</h2>
+            <p class="text-xs text-slate-400">Target: <span id="studio-role-display" class="text-indigo-400 font-semibold">Full Stack Engineer</span> | Lang: <span id="studio-lang-display" class="text-purple-400 font-semibold">English</span></p>
+          </div>
+        </div>
+
+        <!-- Live Telemetry Badges -->
+        <div class="flex flex-wrap items-center gap-2 text-xs">
+          <div class="bg-slate-950 border border-slate-800 px-3 py-1.5 rounded-xl flex items-center space-x-1.5">
+            <span class="text-slate-400">Eye Contact:</span>
+            <span id="hud-eye-val" class="font-bold text-emerald-400">88%</span>
+          </div>
+          <div class="bg-slate-950 border border-slate-800 px-3 py-1.5 rounded-xl flex items-center space-x-1.5">
+            <span class="text-slate-400">Posture:</span>
+            <span id="hud-posture-val" class="font-bold text-emerald-400">Optimal</span>
+          </div>
+          <div class="bg-slate-950 border border-slate-800 px-3 py-1.5 rounded-xl flex items-center space-x-1.5">
+            <span class="text-slate-400">Pacing:</span>
+            <span id="hud-wpm-val" class="font-bold text-indigo-400">142 WPM</span>
+          </div>
+          <div class="bg-slate-950 border border-slate-800 px-3 py-1.5 rounded-xl flex items-center space-x-1.5">
+            <span class="text-slate-400">Fillers:</span>
+            <span id="hud-filler-val" class="font-bold text-amber-400">0 detected</span>
+          </div>
+          <button onclick="finishInterview()" class="bg-red-600 hover:bg-red-500 text-white font-semibold px-4 py-1.5 rounded-xl transition shadow-md shadow-red-600/20 ml-2">
+            Finish & Analyze
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Video Feeds & Controls Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Left 7 cols: AI Interviewer Video + Candidate Telemetry -->
+        <div class="lg:col-span-7 space-y-4">
+          
+          <!-- AI Interviewer Visual Box -->
+          <div class="relative bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden aspect-video shadow-2xl flex flex-col justify-between p-4">
+            
+            <div class="flex items-center justify-between z-10">
+              <div class="flex items-center space-x-2 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full text-xs text-white border border-white/10">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="font-semibold">AI Lead Interviewer</span>
+                <span class="text-slate-400">• Sarah (System Architect Profile)</span>
+              </div>
+              <button onclick="replayAiSpeech()" class="bg-indigo-600/80 hover:bg-indigo-600 text-white text-xs px-3 py-1 rounded-full flex items-center space-x-1.5 border border-indigo-400/30 transition">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                <span>Replay Question Audio</span>
+              </button>
+            </div>
+
+            <!-- Avatar Visualizer Core -->
+            <div class="my-auto flex flex-col items-center justify-center text-center space-y-3 z-10">
+              <div class="relative">
+                <div class="absolute -inset-4 rounded-full bg-indigo-500/30 blur-lg pulse-avatar"></div>
+                <div class="relative w-28 h-28 rounded-full bg-gradient-to-tr from-indigo-700 via-purple-600 to-pink-500 border-2 border-indigo-400 p-1 shadow-2xl flex items-center justify-center">
+                  <div class="w-full h-full rounded-full bg-slate-900 overflow-hidden flex items-center justify-center">
+                    <svg class="w-16 h-16 text-indigo-300" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Voice Visualizer Audio Waveform -->
+              <div id="ai-waveform" class="flex items-center space-x-1 h-6">
+                <span class="w-1 bg-indigo-400 rounded-full h-2 waveform-bar"></span>
+                <span class="w-1 bg-indigo-400 rounded-full h-5 waveform-bar"></span>
+                <span class="w-1 bg-indigo-400 rounded-full h-3 waveform-bar"></span>
+                <span class="w-1 bg-indigo-400 rounded-full h-6 waveform-bar"></span>
+                <span class="w-1 bg-indigo-400 rounded-full h-4 waveform-bar"></span>
+                <span class="w-1 bg-indigo-400 rounded-full h-2 waveform-bar"></span>
+              </div>
+            </div>
+
+            <!-- Question Subtitle Overlay -->
+            <div class="bg-black/80 backdrop-blur-md rounded-xl p-3 border border-white/10 text-xs md:text-sm text-slate-100 shadow-xl z-10">
+              <div class="text-[10px] uppercase font-bold text-indigo-400 tracking-wider mb-1 flex items-center justify-between">
+                <span id="interview-round-tag">Round 1 • Background & Architecture</span>
+                <span class="text-slate-400">Multimodal Scoring Active</span>
+              </div>
+              <p id="interview-question-display" class="leading-relaxed font-medium">
+                "Could you walk me through the architecture of a full-stack application you built, focusing on how your frontend state connects with backend API layers and databases?"
+              </p>
+            </div>
+          </div>
+
+          <!-- Candidate Webcam & Vision Telemetry Canvas -->
+          <div class="relative bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden aspect-video shadow-md">
+            <video id="webcam-element" class="w-full h-full object-cover hidden" autoplay playsinline muted></video>
+            
+            <div id="candidate-sim-box" class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-900 via-indigo-950/60 to-slate-900 relative">
+              <div class="relative flex flex-col items-center">
+                <!-- Eye Contact Tracking Crosshair Box -->
+                <div class="w-40 h-44 rounded-2xl border-2 border-emerald-400/80 bg-emerald-500/5 relative flex items-center justify-center">
+                  <div class="absolute -top-2 bg-emerald-500 text-slate-950 text-[10px] font-bold px-2 py-0.5 rounded shadow">
+                    FACE & EYE MESH LOCKED
+                  </div>
+                  <div class="flex space-x-6">
+                    <div class="w-6 h-6 border border-emerald-400 rounded-full flex items-center justify-center">
+                      <div class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></div>
+                    </div>
+                    <div class="w-6 h-6 border border-emerald-400 rounded-full flex items-center justify-center">
+                      <div class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Shoulder & Posture Level Line -->
+                <div class="w-64 h-1 border-t-2 border-dashed border-indigo-400/60 mt-3 relative">
+                  <span class="absolute -top-4 right-0 text-[10px] text-indigo-300 font-mono">Shoulder Level: 98% Balanced</span>
+                </div>
+              </div>
+
+              <div class="absolute bottom-4 left-4 flex items-center space-x-2">
+                <button onclick="toggleWebcamHardware()" id="btn-camera" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs px-3 py-1.5 rounded-lg border border-indigo-400/30 shadow flex items-center space-x-1.5 transition">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                  <span id="cam-status-label">Activate Real Webcam</span>
+                </button>
+                <span class="text-[11px] text-slate-400 bg-black/60 px-2.5 py-1 rounded-md backdrop-blur">
+                  MediaPipe Vision Pipeline
+                </span>
+              </div>
+            </div>
+
+            <!-- Vision Telemetry HUD -->
+            <div class="absolute top-3 right-3 bg-black/80 backdrop-blur-md rounded-xl p-3 border border-white/10 text-[11px] text-slate-200 space-y-1 w-48 shadow-lg">
+              <div class="text-[10px] font-bold text-emerald-400 uppercase tracking-wide">Vision Telemetry</div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Gaze Lock:</span>
+                <span id="vision-gaze" class="text-emerald-400 font-medium">Center (89%)</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Head Pose:</span>
+                <span id="vision-tilt" class="text-slate-200 font-medium">Pitch 1° / Yaw 2°</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Blink Cadence:</span>
+                <span id="vision-blink" class="text-slate-200 font-medium">16 / min (Calm)</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Posture:</span>
+                <span id="vision-posture" class="text-emerald-400 font-medium">Upright</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 5 cols: Candidate Speech Recognition & Interactive Response -->
+        <div class="lg:col-span-5 flex flex-col space-y-4">
+          
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-sm flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
+                <h3 class="text-sm font-bold text-white flex items-center space-x-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>
+                  <span>Candidate Response</span>
+                </h3>
+                <div class="flex items-center space-x-1.5 text-xs">
+                  <span>Microphone:</span>
+                  <button onclick="toggleMicrophone()" id="btn-microphone" class="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800 text-indigo-400 font-semibold hover:bg-indigo-500/10 flex items-center space-x-1">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>
+                    <span id="mic-status-label">Voice Dictate</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Live Response Input -->
+              <label class="block text-xs font-semibold text-slate-400 mb-1.5">
+                Speak or type your answer:
+              </label>
+              <textarea id="candidate-text-response" rows="6" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs md:text-sm text-slate-100 focus:outline-none focus:border-indigo-500 resize-none font-sans leading-relaxed" placeholder="Start speaking into your mic or choose a quick realistic response template below..."></textarea>
+
+              <!-- Quick Realistic Answer Presets -->
+              <div class="mt-3">
+                <span class="text-[11px] font-semibold text-slate-400 block mb-1.5">Quick Test Responses:</span>
+                <div class="flex flex-col space-y-1.5">
+                  <button onclick="applyPresetResponse('star')" class="text-left text-xs p-2 rounded-lg bg-slate-950 hover:bg-indigo-500/10 border border-slate-800 transition">
+                    <span class="font-bold text-emerald-400">[High Score • STAR]</span>
+                    <span class="text-slate-200 ml-1">Structured Kafka + Redis partition design with quantifiable results.</span>
+                  </button>
+                  <button onclick="applyPresetResponse('fillers')" class="text-left text-xs p-2 rounded-lg bg-slate-950 hover:bg-amber-500/10 border border-slate-800 transition">
+                    <span class="font-bold text-amber-400">[Average • Fillers]</span>
+                    <span class="text-slate-200 ml-1">"Um, basically, we use Postgres and maybe queue... like, you know."</span>
+                  </button>
+                  <button onclick="applyPresetResponse('hindi')" class="text-left text-xs p-2 rounded-lg bg-slate-950 hover:bg-purple-500/10 border border-slate-800 transition">
+                    <span class="font-bold text-purple-400">[Hindi / Regional]</span>
+                    <span class="text-slate-200 ml-1">"हाँ, इस सिस्टम के लिए हम Apache Kafka और Redis का उपयोग करेंगे..."</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit Response & Trigger Adaptive AI Follow-up -->
+            <div class="pt-4 border-t border-slate-800 mt-4 flex items-center justify-between">
+              <button onclick="submitResponseForAdaptiveFollowUp()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs md:text-sm px-5 py-2.5 rounded-xl shadow-md transition flex items-center space-x-2">
+                <span>Submit Answer & Get Follow-Up</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"/></svg>
+              </button>
+              <button onclick="skipToNextQuestion()" class="text-xs text-slate-400 hover:text-white font-medium px-3 py-1">
+                Next Question →
+              </button>
+            </div>
+          </div>
+
+          <!-- Real-time AI Coaching Cue Callout -->
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-sm">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-indigo-400 mb-1 flex items-center space-x-1.5">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+              <span>Live AI Coaching Feedback</span>
+            </h4>
+            <p id="live-coaching-box" class="text-xs text-slate-300 leading-relaxed">
+              "Great eye contact and steady shoulder alignment! When speaking about architecture, highlight concrete trade-offs (e.g. latency vs consistency)."
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- TAB 3: AI PERFORMANCE DIAGNOSTIC REPORT -->
+    <!-- ============================================== -->
+    <section id="section-report" class="tab-pane hidden space-y-6">
+      
+      <!-- Report Header Banner -->
+      <div class="bg-gradient-to-r from-indigo-900/50 via-purple-900/30 to-slate-900 border border-indigo-500/30 rounded-2xl p-6 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-bold uppercase">
+              Evaluation Completed
+            </span>
+            <span class="text-xs text-slate-400">Multimodal AI 360° Assessment</span>
+          </div>
+          <h2 class="text-2xl font-black mt-2 tracking-tight text-white">Comprehensive Diagnostic Scorecard</h2>
+          <p class="text-xs md:text-sm text-slate-400 mt-1">
+            Candidate: Rajan Soni | Target Role: Full Stack Lead | Language: English / Hindi
+          </p>
+        </div>
+
+        <div class="flex items-center space-x-4 bg-black/60 backdrop-blur-md px-5 py-3 rounded-2xl border border-white/10 self-stretch md:self-auto justify-between md:justify-start">
+          <div class="text-center">
+            <div id="report-overall-score" class="text-3xl font-black text-emerald-400">86<span class="text-sm text-slate-400 font-normal">/100</span></div>
+            <div class="text-[11px] font-semibold text-slate-300 uppercase tracking-wide">Composite Score</div>
+          </div>
+          <div class="h-10 w-[1px] bg-white/10"></div>
+          <div>
+            <div id="report-tier-label" class="text-xs font-bold text-indigo-300">Readiness: "Hire Ready"</div>
+            <div class="text-[11px] text-slate-400">Top 8th Percentile</div>
+            <div class="text-[10px] text-emerald-400 font-semibold mt-0.5">✓ Eligible for Recruiter Discovery</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Score Breakdown Metric Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-sm space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="text-xs font-semibold text-slate-400">Technical Knowledge</span>
+            <span class="text-sm font-bold text-indigo-400">90%</span>
+          </div>
+          <div class="w-full bg-slate-950 h-2 rounded-full overflow-hidden">
+            <div class="bg-indigo-500 h-full w-[90%]"></div>
+          </div>
+          <p class="text-[11px] text-slate-400">Solid architectural depth in streaming pipelines and caching strategies.</p>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-sm space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="text-xs font-semibold text-slate-400">Communication Clarity</span>
+            <span class="text-sm font-bold text-emerald-400">84%</span>
+          </div>
+          <div class="w-full bg-slate-950 h-2 rounded-full overflow-hidden">
+            <div class="bg-emerald-500 h-full w-[84%]"></div>
+          </div>
+          <p class="text-[11px] text-slate-400">Clear logic flow; structured problem-solving approach.</p>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-sm space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="text-xs font-semibold text-slate-400">Eye Contact & Gaze</span>
+            <span class="text-sm font-bold text-purple-400">88%</span>
+          </div>
+          <div class="w-full bg-slate-950 h-2 rounded-full overflow-hidden">
+            <div class="bg-purple-500 h-full w-[88%]"></div>
+          </div>
+          <p class="text-[11px] text-slate-400">Steady gaze anchored toward camera lens throughout responses.</p>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-sm space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="text-xs font-semibold text-slate-400">Body Language & Posture</span>
+            <span class="text-sm font-bold text-blue-400">92%</span>
+          </div>
+          <div class="w-full bg-slate-950 h-2 rounded-full overflow-hidden">
+            <div class="bg-blue-500 h-full w-[92%]"></div>
+          </div>
+          <p class="text-[11px] text-slate-400">Upright posture, balanced shoulders, natural conversational gestures.</p>
+        </div>
+      </div>
+
+      <!-- Deep Dive Diagnostics & Actionable Drills -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        
+        <!-- Weakness Diagnosis -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-white flex items-center space-x-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+            <span>Targeted Weakness Diagnosis</span>
+          </h3>
+
+          <div class="space-y-3">
+            <div class="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs space-y-1">
+              <div class="font-bold text-amber-400 flex items-center justify-between">
+                <span>1. Filler Word Density: 3.1% ("Um", "Basically")</span>
+                <span class="text-[10px] bg-amber-500/20 px-2 py-0.5 rounded">Moderate</span>
+              </div>
+              <p class="text-slate-200">
+                You used vocal fillers 5 times while formulating technical explanations under time pressure.
+              </p>
+              <div class="text-[11px] text-amber-300 font-medium mt-1">
+                Correction: Take deliberate 2-second silent pauses to structure thoughts before vocalizing.
+              </div>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-xs space-y-1">
+              <div class="font-bold text-indigo-400 flex items-center justify-between">
+                <span>2. STAR Method - Quantifiable "Result" Step</span>
+                <span class="text-[10px] bg-indigo-500/20 px-2 py-0.5 rounded">Actionable</span>
+              </div>
+              <p class="text-slate-200">
+                Situation and Action steps were detailed, but specific numerical outcomes (e.g. latency % or dollar savings) were omitted.
+              </p>
+              <div class="text-[11px] text-indigo-300 font-medium mt-1">
+                Correction: Conclude behavioral answers with explicit numbers: "As a result, we cut latency by 45%."
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Personalized Practice Drills -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-sm space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="text-base font-bold text-white flex items-center space-x-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-purple-500"></span>
+              <span>Personalized Improvement Drills</span>
+            </h3>
+            <span class="text-xs text-slate-400">Generated by AI</span>
+          </div>
+
+          <div class="space-y-3">
+            <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between">
+              <div>
+                <h4 class="text-xs font-bold text-white">5-Minute Filler Word Elimination Challenge</h4>
+                <p class="text-[11px] text-slate-400">Real-time acoustic detection flags any 'um' or 'like' immediately.</p>
+                <div class="flex items-center space-x-2 mt-1.5 text-[10px] text-purple-400 font-semibold">
+                  <span>⚡ 5 mins</span>
+                  <span>•</span>
+                  <span>Acoustic AI Training</span>
+                </div>
+              </div>
+              <button onclick="launchInteractiveDrill('filler')" class="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold transition">
+                Start Drill
+              </button>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between">
+              <div>
+                <h4 class="text-xs font-bold text-white">The STAR Story Quantifier Challenge</h4>
+                <p class="text-[11px] text-slate-400">Practice framing conflict and outage stories with strict metrics.</p>
+                <div class="flex items-center space-x-2 mt-1.5 text-[10px] text-emerald-400 font-semibold">
+                  <span>⚡ 8 mins</span>
+                  <span>•</span>
+                  <span>Behavioral Mastery</span>
+                </div>
+              </div>
+              <button onclick="launchInteractiveDrill('star')" class="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold transition">
+                Start Drill
+              </button>
+            </div>
+          </div>
+
+          <div class="pt-2">
+            <button onclick="switchTab('marketplace')" class="w-full py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-xs md:text-sm rounded-xl shadow-lg transition flex items-center justify-center space-x-2">
+              <span>View Profile in Recruiter Discovery Pool (Score: 86%)</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- TAB 4: COMPANY DISCOVERY & RECRUITMENT -->
+    <!-- ============================================== -->
+    <section id="section-marketplace" class="tab-pane hidden space-y-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-sm">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-5 mb-6">
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 text-xs font-bold uppercase">
+                Enterprise Recruiter Portal
+              </span>
+              <span class="text-xs text-slate-400">Verified AI Pre-Screened Candidates</span>
+            </div>
+            <h2 class="text-xl font-bold mt-1 text-white">Company Discovery & Direct Hiring Portal</h2>
+            <p class="text-xs md:text-sm text-slate-400 mt-0.5">
+              Hire candidates verified through full-scale multimodal AI mock interviews across technical depth, composure, and communication.
+            </p>
+          </div>
+
+          <!-- Filters -->
+          <div class="flex items-center space-x-2">
+            <select class="bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-slate-200 focus:outline-none">
+              <option>All Technical Roles</option>
+              <option>Full Stack & Backend</option>
+              <option>AI / ML Engineers</option>
+            </select>
+            <select class="bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-slate-200 focus:outline-none">
+              <option>Score ≥ 80% (Verified Ready)</option>
+              <option>Score ≥ 90% (Top 2%)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Candidate Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          
+          <!-- Candidate 1: Rajan Soni (Current Candidate Profile) -->
+          <div class="border-2 border-indigo-500/50 bg-gradient-to-b from-indigo-950/30 to-slate-900 rounded-2xl p-5 shadow-xl relative flex flex-col justify-between">
+            <div class="absolute -top-3 right-4 bg-indigo-600 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow">
+              Your Profile (Featured)
+            </div>
+
+            <div>
+              <div class="flex items-center space-x-3 mb-3">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center font-bold text-lg text-white shadow">
+                  RS
+                </div>
+                <div>
+                  <h3 class="font-bold text-sm text-white flex items-center space-x-1.5">
+                    <span>Rajan Soni</span>
+                    <span class="text-emerald-400" title="AI Verified">✓</span>
+                  </h3>
+                  <p class="text-xs text-indigo-400 font-medium">Full Stack & Systems Lead</p>
+                  <p class="text-[11px] text-slate-400">English • Hindi • Gujarati</p>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap gap-1 mb-3">
+                <span class="text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded font-semibold">Score: 86/100</span>
+                <span class="text-[10px] bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2 py-0.5 rounded">Eye Contact 88%</span>
+                <span class="text-[10px] bg-purple-500/10 text-purple-400 border border-purple-500/20 px-2 py-0.5 rounded">STAR Master</span>
+              </div>
+
+              <div class="text-xs text-slate-400 space-y-1 mb-4">
+                <div class="flex justify-between"><span>Technical Depth:</span><span class="font-bold text-white">90%</span></div>
+                <div class="flex justify-between"><span>Composure & Etiquette:</span><span class="font-bold text-white">88%</span></div>
+                <div class="flex justify-between"><span>Communication Clarity:</span><span class="font-bold text-white">84%</span></div>
+              </div>
+            </div>
+
+            <div class="space-y-2 pt-2 border-t border-slate-800">
+              <button onclick="handleRecruiterOutreach('shortlist', 'Rajan Soni')" class="w-full py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs rounded-xl shadow transition">
+                Shortlist Candidate
+              </button>
+              <button onclick="handleRecruiterOutreach('invite', 'Rajan Soni')" class="w-full py-1.5 bg-slate-950 hover:bg-slate-800 border border-slate-800 text-xs text-slate-300 font-medium rounded-xl transition">
+                Schedule Fast-Track Interview
+              </button>
+            </div>
+          </div>
+
+          <!-- Candidate 2: Priya Patel -->
+          <div class="border border-slate-800 bg-slate-900 rounded-2xl p-5 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center space-x-3 mb-3">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-pink-600 to-rose-600 flex items-center justify-center font-bold text-lg text-white shadow">
+                  PP
+                </div>
+                <div>
+                  <h3 class="font-bold text-sm text-white flex items-center space-x-1.5">
+                    <span>Priya Patel</span>
+                    <span class="text-emerald-400" title="AI Verified">✓</span>
+                  </h3>
+                  <p class="text-xs text-rose-400 font-medium">AI / Machine Learning Engineer</p>
+                  <p class="text-[11px] text-slate-400">English • Gujarati</p>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap gap-1 mb-3">
+                <span class="text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded font-semibold">Score: 92/100</span>
+                <span class="text-[10px] bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2 py-0.5 rounded">LLMs & PyTorch</span>
+                <span class="text-[10px] bg-purple-500/10 text-purple-400 border border-purple-500/20 px-2 py-0.5 rounded">WPM 148</span>
+              </div>
+
+              <div class="text-xs text-slate-400 space-y-1 mb-4">
+                <div class="flex justify-between"><span>Technical Depth:</span><span class="font-bold text-white">95%</span></div>
+                <div class="flex justify-between"><span>Composure & Etiquette:</span><span class="font-bold text-white">91%</span></div>
+                <div class="flex justify-between"><span>Communication Clarity:</span><span class="font-bold text-white">90%</span></div>
+              </div>
+            </div>
+
+            <div class="space-y-2 pt-2 border-t border-slate-800">
+              <button onclick="handleRecruiterOutreach('shortlist', 'Priya Patel')" class="w-full py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs rounded-xl shadow transition">
+                Shortlist Candidate
+              </button>
+              <button onclick="handleRecruiterOutreach('invite', 'Priya Patel')" class="w-full py-1.5 bg-slate-950 hover:bg-slate-800 border border-slate-800 text-xs text-slate-300 font-medium rounded-xl transition">
+                Schedule Fast-Track Interview
+              </button>
+            </div>
+          </div>
+
+          <!-- Candidate 3: Amit Sharma -->
+          <div class="border border-slate-800 bg-slate-900 rounded-2xl p-5 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center space-x-3 mb-3">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-600 flex items-center justify-center font-bold text-lg text-white shadow">
+                  AS
+                </div>
+                <div>
+                  <h3 class="font-bold text-sm text-white flex items-center space-x-1.5">
+                    <span>Amit Sharma</span>
+                    <span class="text-emerald-400" title="AI Verified">✓</span>
+                  </h3>
+                  <p class="text-xs text-emerald-400 font-medium">DevOps & Cloud Architect</p>
+                  <p class="text-[11px] text-slate-400">English • Hindi</p>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap gap-1 mb-3">
+                <span class="text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded font-semibold">Score: 88/100</span>
+                <span class="text-[10px] bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2 py-0.5 rounded">Kubernetes</span>
+                <span class="text-[10px] bg-purple-500/10 text-purple-400 border border-purple-500/20 px-2 py-0.5 rounded">AWS Certified</span>
+              </div>
+
+              <div class="text-xs text-slate-400 space-y-1 mb-4">
+                <div class="flex justify-between"><span>Technical Depth:</span><span class="font-bold text-white">89%</span></div>
+                <div class="flex justify-between"><span>Composure & Etiquette:</span><span class="font-bold text-white">87%</span></div>
+                <div class="flex justify-between"><span>Communication Clarity:</span><span class="font-bold text-white">86%</span></div>
+              </div>
+            </div>
+
+            <div class="space-y-2 pt-2 border-t border-slate-800">
+              <button onclick="handleRecruiterOutreach('shortlist', 'Amit Sharma')" class="w-full py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs rounded-xl shadow transition">
+                Shortlist Candidate
+              </button>
+              <button onclick="handleRecruiterOutreach('invite', 'Amit Sharma')" class="w-full py-1.5 bg-slate-950 hover:bg-slate-800 border border-slate-800 text-xs text-slate-300 font-medium rounded-xl transition">
+                Schedule Fast-Track Interview
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- TAB 5: ARCHITECTURE SPECIFICATION -->
+    <!-- ============================================== -->
+    <section id="section-architecture" class="tab-pane hidden space-y-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-sm space-y-6">
+        <div class="border-b border-slate-800 pb-4">
+          <h2 class="text-xl font-bold text-white">Modular Production Architecture</h2>
+          <p class="text-xs md:text-sm text-slate-400 mt-1">
+            Complete design of the multimodal computer vision, multilingual speech, and recruitment matching engines.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+          <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+            <div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold">1</div>
+            <h3 class="font-bold text-sm text-white">Vision & Non-Verbal Telemetry</h3>
+            <p class="text-slate-400 leading-relaxed">
+              <strong>MediaPipe FaceMesh + Pose:</strong> Extracts 468 3D facial landmarks and 33 body posture keypoints locally in real-time, measuring eye gaze deviation, head rotation, and shoulder slouching without sending raw video to external servers.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+            <div class="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold">2</div>
+            <h3 class="font-bold text-sm text-white">Multilingual Speech & Audio</h3>
+            <p class="text-slate-400 leading-relaxed">
+              <strong>Whisper & Gemini Live Multimodal:</strong> High-precision speech-to-text supporting English, Hindi (हिंदी), and Gujarati (ગુજરાતી), with phonetic filler word tokenizers and WPM cadence tracking.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+            <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">3</div>
+            <h3 class="font-bold text-sm text-white">Talent Discovery Marketplace</h3>
+            <p class="text-slate-400 leading-relaxed">
+              <strong>PostgreSQL + pgvector:</strong> Semantic matching between candidate verified interview performance and recruiter role criteria, enabling direct hiring pipelines and instant shortlist alerts.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-indigo-950/40 border border-indigo-500/30 flex items-center justify-between">
+          <div>
+            <h4 class="text-xs font-bold text-indigo-300">Architecture Blueprint Reference</h4>
+            <p class="text-[11px] text-slate-400">Complete technical specification stored in the artifact workspace.</p>
+          </div>
+          <span class="text-xs font-mono bg-black/60 text-indigo-300 px-3 py-1 rounded-md border border-indigo-500/30">ai_interview_platform_blueprint.md</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-indigo-600 text-white text-xs font-semibold px-4 py-2.5 rounded-xl shadow-2xl flex items-center space-x-2 border border-indigo-400/30">
+      <span id="toast-msg">Notification message</span>
+    </div>
+  </div>
+
+  <!-- Main Application Script -->
+  <script type="module">
+    import { VisionPipeline } from './src/vision/vision_pipeline.js';
+    import { SpeechPipeline } from './src/audio/speech_pipeline.js';
+    import { InterviewEngine } from './src/ai/interview_engine.js';
+    import { Evaluator } from './src/scoring/evaluator.js';
+    import { Marketplace } from './src/recruitment/marketplace.js';
+
+    // Instantiate Modules
+    const vision = new VisionPipeline({
+      onTelemetryUpdate: (telemetry) => {
+        document.getElementById('hud-eye-val').textContent = `${telemetry.eyeContactScore}%`;
+        document.getElementById('hud-posture-val').textContent = telemetry.postureStatus;
+        document.getElementById('vision-gaze').textContent = `Center (${telemetry.eyeContactScore}%)`;
+        document.getElementById('vision-tilt').textContent = `Pitch ${telemetry.headPose.pitch}° / Yaw ${telemetry.headPose.yaw}°`;
+        document.getElementById('vision-blink').textContent = `${telemetry.blinkRatePerMin} / min (Calm)`;
+        document.getElementById('vision-posture').textContent = telemetry.postureStatus;
+
+        if (telemetry.lastWarning) {
+          document.getElementById('live-coaching-box').textContent = telemetry.lastWarning;
+        }
+      }
+    });
+
+    const speech = new SpeechPipeline({
+      onTranscriptChunk: (chunk) => {
+        document.getElementById('candidate-text-response').value = chunk.full;
+      },
+      onMetricsUpdate: (metrics) => {
+        document.getElementById('hud-wpm-val').textContent = `${metrics.wpm} WPM`;
+        document.getElementById('hud-filler-val').textContent = `${metrics.fillerCount} detected`;
+      },
+      onWaveformTick: (bars) => {
+        const barEls = document.querySelectorAll('#ai-waveform .waveform-bar');
+        barEls.forEach((el, idx) => {
+          if (bars[idx]) el.style.height = `${bars[idx]}px`;
+        });
+      }
+    });
+
+    const interview = new InterviewEngine();
+    const evaluator = new Evaluator();
+    const marketplace = new Marketplace();
+
+    // Start vision simulation by default
+    vision.startCamera();
+
+    // Navigation Tab Switching
+    window.switchTab = function(tabId) {
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.add('hidden'));
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('bg-slate-800', 'text-white', 'shadow-sm');
+        btn.classList.add('text-slate-400');
+      });
+
+      const targetPane = document.getElementById('section-' + tabId);
+      const targetNav = document.getElementById('nav-' + tabId);
+      if (targetPane) targetPane.classList.remove('hidden');
+      if (targetNav) {
+        targetNav.classList.remove('text-slate-400');
+        targetNav.classList.add('bg-slate-800', 'text-white', 'shadow-sm');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // Role & Language Selectors
+    window.handleRoleChange = function() {
+      const role = document.getElementById('select-role').value;
+      interview.setRole(role);
+      document.getElementById('studio-role-display').textContent = role;
+      updateCurrentQuestionDisplay();
+      showToast(`Interview role set to: ${role}`);
+    };
+
+    window.handleLanguageChange = function() {
+      const lang = document.getElementById('select-language').value;
+      speech.setLanguage(lang);
+      interview.setLanguage(lang);
+      const names = { en: 'English', hi: 'Hindi (हिंदी)', gu: 'Gujarati (ગુજરાતી)' };
+      document.getElementById('studio-lang-display').textContent = names[lang] || 'English';
+      updateCurrentQuestionDisplay();
+      showToast(`Language updated to ${names[lang]}`);
+    };
+
+    function updateCurrentQuestionDisplay() {
+      const qData = interview.getCurrentQuestion();
+      document.getElementById('interview-round-tag').textContent = `Round ${qData.roundIndex} of ${qData.totalRounds} • ${qData.stage}`;
+      document.getElementById('interview-question-display').textContent = `"${qData.question}"`;
+      speech.speak(qData.question);
+    }
+
+    window.replayAiSpeech = function() {
+      const text = document.getElementById('interview-question-display').textContent.replace(/"/g, '');
+      speech.speak(text);
+      showToast("Replaying AI interviewer audio...");
+    };
+
+    window.skipToNextQuestion = function() {
+      interview.nextQuestion();
+      document.getElementById('candidate-text-response').value = '';
+      updateCurrentQuestionDisplay();
+      showToast("Advanced to next interview question");
+    };
+
+    // Candidate Response Samples
+    window.applyPresetResponse = function(type) {
+      const input = document.getElementById('candidate-text-response');
+      if (type === 'star') {
+        input.value = "At my previous company, our ingestion pipeline faced a bottleneck at 90,000 requests per second (Situation). My task was to re-architect the data path with zero downtime (Task). I implemented Apache Kafka with key-based partitioning and Redis caching with asynchronous database write-behind (Action). As a result, we reduced latency by 52% and supported 110,000 RPS during peak load (Result).";
+        showToast("Loaded high-performing STAR response template");
+      } else if (type === 'fillers') {
+        input.value = "Um, basically, what we did was like... we added a queue, you know? And um, if the database gets too slow, basically we just add more servers and um, hope it handles the load.";
+        showToast("Loaded filler-heavy response template");
+      } else if (type === 'hindi') {
+        input.value = "हाँ, इस सिस्टम के लिए हम Apache Kafka और Redis का उपयोग करेंगे ताकि थ्रूपुट 1 लाख इवेंट्स प्रति सेकंड तक आसानी से पहुँच सके। डेटा को पार्टीशन करके हम कंज्यूमर ग्रुप्स में लोड बैलेंस करेंगे।";
+        showToast("Loaded Hindi technical response template");
+      }
+    };
+
+    // Submit Response & Adaptive Follow-up
+    window.submitResponseForAdaptiveFollowUp = function() {
+      const answer = document.getElementById('candidate-text-response').value.trim();
+      if (!answer) {
+        showToast("Please provide an answer first.");
+        return;
+      }
+
+      showToast("AI analyzing answer & generating dynamic follow-up...");
+      setTimeout(() => {
+        const followUp = interview.generateAdaptiveFollowUp(answer);
+        document.getElementById('interview-round-tag').textContent = "Dynamic Adaptive Follow-Up • Deep Dive";
+        document.getElementById('interview-question-display').textContent = `"${followUp.followUpText}"`;
+        speech.speak(followUp.followUpText);
+        document.getElementById('candidate-text-response').value = '';
+        document.getElementById('live-coaching-box').textContent = `AI Follow-up Insight: ${followUp.reasoning}`;
+      }, 900);
+    };
+
+    // Webcam Hardware Toggle
+    window.toggleWebcamHardware = async function() {
+      const video = document.getElementById('webcam-element');
+      const sim = document.getElementById('candidate-sim-box');
+      const label = document.getElementById('cam-status-label');
+
+      if (!vision.isActive || vision.isSimulated) {
+        const res = await vision.startCamera(video);
+        if (res.mode === 'hardware-webcam') {
+          video.classList.remove('hidden');
+          sim.classList.add('hidden');
+          label.textContent = "Switch to Simulator";
+          showToast("Real webcam activated with local vision telemetry");
+        } else {
+          showToast("Webcam unavailable; continuing in simulation mode.");
+        }
+      } else {
+        vision.stopCamera();
+        video.classList.add('hidden');
+        sim.classList.remove('hidden');
+        label.textContent = "Activate Real Webcam";
+        vision.startCamera();
+        showToast("Switched to simulated landmarks");
+      }
+    };
+
+    // Microphone Toggle
+    window.toggleMicrophone = function() {
+      const label = document.getElementById('mic-status-label');
+      if (!speech.isListening) {
+        const res = speech.startListening();
+        if (res.success) {
+          label.textContent = "Listening...";
+          label.parentElement.classList.add('bg-red-500/20', 'text-red-400');
+          showToast("Microphone active: Start speaking");
+        } else {
+          showToast("Microphone unavailable; text input is enabled.");
+        }
+      } else {
+        speech.stopListening();
+        label.textContent = "Voice Dictate";
+        label.parentElement.classList.remove('bg-red-500/20', 'text-red-400');
+        showToast("Microphone stopped");
+      }
+    };
+
+    // Finish & Generate Report
+    window.finishInterview = function() {
+      speech.stopListening();
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      showToast("Synthesizing 360° AI diagnostic report...");
+
+      const evaluation = evaluator.evaluateSession({
+        visionSnapshot: vision.getSnapshot(),
+        speechSnapshot: speech.getSnapshot(),
+        answers: interview.history,
+        role: interview.role
+      });
+
+      document.getElementById('report-overall-score').innerHTML = `${evaluation.overallScore}<span class="text-sm text-slate-400 font-normal">/100</span>`;
+      document.getElementById('report-tier-label').textContent = `Readiness: "${evaluation.readinessTier}"`;
+
+      setTimeout(() => {
+        switchTab('report');
+      }, 700);
+    };
+
+    // Recruiter Marketplace Actions
+    window.handleRecruiterOutreach = function(action, name) {
+      if (action === 'shortlist') {
+        showToast(`✓ Added ${name} to Shortlisted Talent Pool!`);
+      } else {
+        showToast(`✉ Direct interview invite sent to ${name}!`);
+      }
+    };
+
+    // Practice Drill Launcher
+    window.launchInteractiveDrill = function(type) {
+      showToast(`Starting drill: ${type.toUpperCase()}. Switching to live studio mode.`);
+      switchTab('interview');
+      if (type === 'filler') {
+        document.getElementById('interview-round-tag').textContent = "Drill Mode • Zero-Filler Challenge";
+        document.getElementById('interview-question-display').textContent = 
+          `"Explain how event loops work in modern runtimes. Aim for 60 seconds with zero 'ums' or 'likes'."`;
+      } else if (type === 'star') {
+        document.getElementById('interview-round-tag').textContent = "Drill Mode • STAR Result Quantifier";
+        document.getElementById('interview-question-display').textContent = 
+          `"Describe a critical database outage. Detail the exact percentage or metric improvements you delivered."`;
+      }
+      speech.speak(document.getElementById('interview-question-display').textContent.replace(/"/g, ''));
+    };
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const text = document.getElementById('toast-msg');
+      text.textContent = msg;
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 3000);
+    }
+
+    // Initialize initial question on load
+    window.addEventListener('DOMContentLoaded', () => {
+      updateCurrentQuestionDisplay();
+    });
+  </script>
+</body>
+</html>

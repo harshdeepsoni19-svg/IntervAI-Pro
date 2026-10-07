@@ -1,0 +1,30 @@
+{
+  "name": "intervai-mock-interview-platform",
+  "version": "1.0.0",
+  "description": "AI-Powered Mock Interview & Career Preparation Platform with Multimodal Vision, Multilingual Speech, and Recruiter Discovery",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "ai-mock-interview",
+    "multimodal",
+    "mediapipe",
+    "gemini",
+    "recruitment",
+    "speech-recognition",
+    "star-method"
+  ],
+  "author": "Rajan Soni",
+  "license": "MIT",
+  "dependencies": {
+    "@mediapipe/camera_utils": "^0.4.1675466862",
+    "@mediapipe/face_mesh": "^0.4.1633559619",
+    "@mediapipe/pose": "^0.5.1675469404"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
